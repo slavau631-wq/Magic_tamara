@@ -1,7 +1,5 @@
 const PIXEL_ID = "1669633737452527";
 const CLICK_DELAY_MS = 350;
-const AUTO_REDIRECT_DELAY_MS = 1000;
-const TELEGRAM_URL = "https://t.me/Magic_tamara";
 
 function trackPixel(eventName) {
   if (typeof fbq === "function") {
@@ -34,15 +32,3 @@ document.querySelectorAll(".js-track-link").forEach((link) => {
     }, CLICK_DELAY_MS);
   });
 });
-
-window.setTimeout(() => {
-  trackPixel("Lead");
-
-  if (typeof fbq === "function") {
-    fbq("trackCustom", "AutoRedirect", { pixel_id: PIXEL_ID });
-  }
-
-  window.setTimeout(() => {
-    window.location.href = TELEGRAM_URL;
-  }, CLICK_DELAY_MS);
-}, AUTO_REDIRECT_DELAY_MS);
